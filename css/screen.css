@@ -68,6 +68,13 @@
     /*  = 72px */
 
     /* forms */
+
+    /*  */
+    --global-color-primary: #4DCCBD ;
+    --global-color-secundary: #AEC3B0;
+    --global-color-tertiary: #D6FFF6;
+    --global-color-quaternary: #231651;
+    --global-color-quinary: #231651;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -118,6 +125,15 @@ body {
 ::selection {
     background: var(--global-selection-backgroundColor);
     text-shadow: none;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--global-color-primary);
+    color: var(--global-color-quaternary);
 }
 
 /*------------------------------------*\
@@ -507,7 +523,130 @@ input::placeholder {
 #COMPONENTS
 \*------------------------------------*/
 
+.c-app{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
 
+}
+
+.c-app__content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.c-app__footer{
+    position: absolute;
+    bottom: 0;
+    background-color: var(--global-color-tertiary);
+    color: var(--global-color-primary);
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    & a{
+        color: var(--global-color-quaternary);
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.c-app__button{
+    padding: 8px;
+    aspect-ratio: 1;
+    background-color: var(--global-color-quinary);
+    width: fit-content;
+    border-radius: 14px;
+    border: solid 2px var(--global-color-quinary);
+    color: var(--global-color-primary);
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: var(--global-color-primary);
+        color: var(--global-color-quinary);
+        cursor: pointer;
+    }
+}
+
+.c-app__bulb{
+    width: 400px;
+    aspect-ratio: 1;
+    max-width: 100%;
+    background-image: url(../img/svg/wolkje.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--global-color-quaternary);
+    font-weight: bolder;
+    & p{
+        margin: 0;
+        font-size: 1.5rem;
+    }
+}
+
+.c-loading{
+    position: absolute;
+    display: flex;
+    gap: .6rem;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 64px;
+    /* TO DO shimmer/ pulsation animation */
+    top: 50%;  
+    left: 50%; 
+
+    transform: translate(-50%, -50%);
+}
+
+
+.c-loading__placeholder{
+    display: block;
+    width: 25%;
+    height: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--global-color-quinary);
+    opacity: 0.4;
+    overflow: hidden;
+    position: relative;
+}
+
+.c-loading__placeholder--half{
+    width: 50%;
+}
+
+.c-loading__placeholder--full{
+    width: 100%;
+}
+
+.c-loading__placeholder::after{
+    content: "";
+    display: block;
+    position: absolute;
+    opacity: 1;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+background-image: linear-gradient(90deg, transparent 20%, var(--global-color-tertiary) 50%, var(--global-color-tertiary) 50%,transparent 80%);
+    height: 1.5rem;
+    transform: translateX(-100%);
+    animation: Shimmer 2s infinite;
+    overflow: hidden;
+}
 
 /*------------------------------------*\
 #UTILITIES
@@ -518,6 +657,10 @@ input::placeholder {
     ---
     Utility classes to put specific colors onto elements
 */
+
+.u-hidden{
+    display: none;
+}
 
 .u-color-neutral-500 {
     color: var(--global-color-neutral-500);
@@ -957,5 +1100,11 @@ No media query since this is the default in mobile first design
     h2,
     h3 {
         page-break-after: avoid;
+    }
+}
+
+@keyframes Shimmer {
+    100% {
+        transform: translateX(100%);
     }
 }
