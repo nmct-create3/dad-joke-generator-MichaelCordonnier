@@ -13,26 +13,45 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
 
-
     <link rel="stylesheet" href="css/screen.css">
 
     <script defer src="./script/app.js"></script>
 </head>
 
 <body>
-    <h1>
-        Random Dad Joke
-    </h1>
-    <p>
-        I bought shoes from a drug dealer once. I don't know what he laced them with, but I was tripping all day.
-    </p>
-    <p>
-        Generate new joke
-    </p>
-    <hr>
-    <p>
-        Dad jokes based on <a href="https://icanhazdadjoke.com/">icanhazdadjoke.com</a>
-    </p>
+    <div class="c-app">
+        <div class="c-app__content">
+            <h1>
+                Random Dad Joke
+            </h1>
+            <div class="c-app__bulb">
+                <p class="js-joke-content">
+                    I bought shoes from a drug dealer once. I don't know what he laced them with, but I was tripping all day.
+                </p>
+            </div>
+            <div class="c-loading js-loading-state u-hidden">
+               
+                <span class="c-loading__placeholder c-loading__placeholder--full"></span>
+                <span class="c-loading__placeholder c-loading__placeholder--half"></span>
+                <span class="c-loading__placeholder"></span> <span class="c-loading__placeholder c-loading__placeholder--full"></span>
+            </div>
+            <button class="c-app__button js-joke-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
+                </svg>
+            </button>
+        </div>
+
+        <hr>
+        <div class="c-app__footer">
+            <p>
+                Dad jokes based on <a href="https://icanhazdadjoke.com/">icanhazdadjoke.com</a>
+            </p>
+        </div>
+
+    </div>
+
 </body>
 
 </html>
